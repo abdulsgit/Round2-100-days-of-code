@@ -1,0 +1,173 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Nike</title>
+
+</head>
+<body>
+    <nav>
+    <div class="navtop">
+
+        <div class="navitem">
+           <div class="timefont"> TIME </div>
+        
+        </div>
+
+        <div class="navitem">
+            <div class="search">
+             
+                <input type="text" placeholder="Search..." class="searchinput">
+                <img src="/images/icons8-google-web-search-30.png" alt="" class="searchicon">
+
+            </div>
+        </div>
+
+        <div class="navitem">   
+        
+            <span class="limitedoffer">Limited Offer</span>
+        
+        </div>
+
+    </div>
+
+    <div class="navbottom"> 
+
+        <h3 class="menuitem"> TIMEX </h3>
+        <h3 class="menuitem"> TISSOT </h3>
+        <h3 class="menuitem"> CASIO </h3>
+        <h3 class="menuitem"> SEIKO </h3>
+        <h3 class="menuitem"> ROLEX </h3>
+
+
+
+    </div>
+
+    </nav>
+
+    <div class="slider">
+
+        <div class="sliderwrapper">
+
+            <div class="slideritem">
+                <img src="/images/Timex-rohit-jawalkar-hdd5ft0Bjo8-unsplash.jpg" height="300"  width="250"  alt="">
+            </div>
+            <div class="slidebg"></div>
+            <h1 class="slide1title">TIMEX <br>NEW MODEL</h1>
+            <h2 class="slide1price">$99</h2>
+            <bUtton class="buybutton">BUY NOW</bUtton>
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+CSS:-
+--------
+body
+{
+    font-family: 'Lato', sans-serif;
+    padding:0;
+    margin:0;
+}
+
+nav
+{
+background-color: #111;
+color: white;
+padding: 20px 50px;
+}
+
+.timefont{
+display: flex;
+color: blue;
+font-size: 30px;
+font-weight: bold;
+
+
+
+}
+
+.navtop
+{
+    /* it flexed the space of navtop contents   */
+display: flex;
+/* my items came in center*/
+align-items: center;
+/* equally spaces occured in contents*/
+justify-content: space-between;
+}
+
+/*search class is being styled */
+.search
+{
+display:flex ;
+align-items: center;
+background-color: gray;
+padding: 10px 15px;
+border-radius: 10px;
+}
+
+
+/*here we have made the search bar transparent with no border lines*/
+.searchinput
+{
+border: none;
+background-color: transparent;
+
+}
+
+/*pseudo selector is used here*/
+.searchinput::placeholder{
+
+    color: lightgray;
+
+}
+
+.limitedoffer{
+
+   font-size: 20px;
+   /*used to draw underline*/
+   border-bottom: 2px solid blue;
+   /*cursor changes to pinter when placed over he limited offer*/
+   cursor:pointer
+
+}
+
+
+.navbottom{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.menuitem{
+    /*sets the right margin of the element*/
+    margin-right: 50px;
+    cursor: pointer;
+    color: aqua;
+    font-weight: 500;
+
+}
+
+.slider{
+
+    background-image: url("./images/background1-ray-mallick-5J1bHRX1fNw-unsplash.jpg");
+    clip-path: polygon(, 1% 2%1% 2%, 99% 1%, 99% 1%, 98% 100%, 98% 100%, 1% 100%, 1% 100%);
