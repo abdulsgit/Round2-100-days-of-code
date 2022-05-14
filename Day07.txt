@@ -1,0 +1,120 @@
+Creating Class and Instance Variables:-
+-----------------------------------------
+
+class Employee:
+    #no. of holidays is a class property or variable of the class
+    #it can be accessed by both the objects
+    no_of_holidays = 55
+    pass
+
+abcd = Employee()
+efgh = Employee()
+
+abcd.name = "Abcd"
+abcd.salary= 10000
+abcd.role= "Customer Service"
+
+efgh.name = "Efgh"
+efgh.salary= 30000
+efgh.role= "Software Developer"
+
+#accessing class property using both objects
+print(abcd.no_of_holidays,efgh.no_of_holidays) #output:- 55 55
+
+#we can access class property using class name
+print(Employee.no_of_holidays)#output:- 55
+
+#using object name for changing class property which doesn't changes it actually rather creates an instanse variable
+#for efgh object without changing class property
+#dict is an attribute which converts it into dictionary format
+print(efgh.__dict__)#output:-{'name': 'Efgh', 'salary': 30000, 'role': 'Software Developer'}
+efgh.no_of_holidays=50
+print(Employee.no_of_holidays)#output:- 55
+print(efgh.__dict__)#output:- {'name': 'Efgh', 'salary': 30000, 'role': 'Software Developer', 'no_of_holidays': 50}
+
+#Note:- We cannot change class property using object names coz it doesn't change but creates a new instance variable for
+#specific object
+
+#changing class property using class name
+Employee.no_of_holidays=50
+print(Employee.no_of_holidays,abcd.no_of_holidays,efgh.no_of_holidays)#output:- 50 50 50
+
+--------------------------------------------------------------------------------------------
+Self in Oops:-
+-----------------
+class Employee:
+    #no. of holidays is a class property or variable of the class
+    #it can be accessed by both the objects
+    no_of_holidays = 55
+
+    def printdetails(self):
+        return f"Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+
+roger = Employee()
+bob = Employee()
+
+roger.name = "Roger"
+roger.salary= 10000
+roger.role= "Customer Service"
+
+bob.name = "Bob"
+bob.salary= 30000
+bob.role= "Software Developer"
+
+#automatic bob goes inside the argument of this printdetails function which acts as self
+print(bob.printdetails()) #output:- Name is Bob. Salary is30000 and role is Software Developer
+
+--------------------------------------------------------------------------------------------------
+
+Constructor in Oops:-
+--------------------------
+class Employee:
+    #no. of holidays is a class property or variable of the class
+    #it can be accessed by both the objects
+    no_of_holidays = 55
+
+    #init acts as constructor and due to init we can pass arguments while object creation
+    def __init__(self,aname,asalary,arole):
+        self.name = aname
+        self.salary = asalary
+        self.role = arole
+
+    def printdetails(self):
+        return f"Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+
+#this argument is going to init
+roger = Employee("Roger",455,"Instructor")
+
+print(roger.printdetails())
+
+-------------------------------------------------------------------------
+Class Methods:-
+-------------------------
+class Employee:
+    #no. of holidays is a class property or variable of the class
+    #it can be accessed by both the objects
+    no_of_holidays = 55
+
+    #init acts as constructor and due to init we can pass arguments while object creation
+    def __init__(self,aname,asalary,arole):
+        self.name = aname
+        self.salary = asalary
+        self.role = arole
+
+    def printdetails(self):
+        return f"Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+
+    #changing no_of_holidays using class method instead of using Employee classname
+    #class method is used to access instance variables of class
+    @classmethod
+    def change_holidays(cls,new_holidays):
+        cls.no_of_holidays = new_holidays
+
+#this argument is going to init
+roger = Employee("Roger" , 455 , "Instructor")
+bob = Employee("Bob" , 30000 , "Software Developer")
+
+roger.change_holidays(60)
+
+print(roger.no_of_holidays)#output:- 60
+
