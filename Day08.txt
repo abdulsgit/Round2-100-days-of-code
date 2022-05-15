@@ -1,0 +1,88 @@
+python:-
+--------------------------------
+ClassMethods as a constructor:-
+--------------------------------
+class Employee:
+    #no. of holidays is a class property or variable of the class
+    #it can be accessed by both the objects
+    no_of_holidays = 55
+
+    #init acts as constructor and due to init we can pass arguments while object creation
+    def __init__(self,aname,asalary,arole):
+        self.name = aname
+        self.salary = asalary
+        self.role = arole
+
+    def printdetails(self):
+        return f"Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+
+    #changing no_of_holidays using class method instead of using Employee classname
+    #class method is used to access instance variables of class
+    @classmethod
+    def change_holidays(cls,new_holidays):
+        cls.no_of_holidays = new_holidays
+
+    #class constructor
+    @classmethod
+    def from_str(cls,string):
+        #params = string.split("-")
+        #here cls refers to employee
+        #return cls(params[0], params[1], params[2])
+
+                #or we can write in a one liner code
+
+        #here star will pass as an argument
+        return cls(*string.split("-"))
+
+#this argument is going to init
+roger = Employee("Roger" , 455 , "Instructor")
+bob = Employee("Bob" , 30000 , "Software Developer")
+marley = Employee.from_str("Marley-10000-Pilot")
+
+#roger.change_holidays(60)
+
+#print(roger.no_of_holidays)#output:- 60
+
+print(marley.printdetails()) #output:- Name is Marley. Salary is 10000 and role is Pilot
+
+---------------------------------------------------------------------------------------
+Static methods:-
+--------------------
+class Employee:
+    # no. of holidays is a class property or variable of the class
+    # it can be accessed by both the objects
+    no_of_holidays = 55
+
+    # init acts as constructor and due to init we can pass arguments while object creation
+    def __init__(self, aname, asalary, arole):
+        self.name = aname
+        self.salary = asalary
+        self.role = arole
+
+    def printdetails(self):
+        return f"Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+
+    # changing no_of_holidays using class method instead of using Employee classname
+    # class method is used to access instance variables of class
+    @classmethod
+    def change_holidays(cls, new_holidays):
+        cls.no_of_holidays = new_holidays
+
+    # class constructor
+    @classmethod
+    def from_str(cls, string):
+        return cls(*string.split("-"))
+
+    @staticmethod
+    def printgood(string):
+        print("This is good " + string)
+
+
+# this argument is going to init
+roger = Employee("Roger", 455, "Instructor")
+bob = Employee("Bob", 30000, "Software Developer")
+marley = Employee.from_str("Marley-10000-Pilot")
+
+
+marley.printgood("boy") #output:- This is good boy
+Employee.printgood("boy") #output:- This is good boy
