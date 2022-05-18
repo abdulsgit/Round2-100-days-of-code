@@ -1,0 +1,122 @@
+Single Inheritance:-
+----------------------
+class Employee:
+    # no. of holidays is a class property or variable of the class
+    # it can be accessed by both the objects
+    no_of_holidays = 55
+
+    # init acts as constructor and due to init we can pass arguments while object creation
+    def __init__(self, aname, asalary, arole):
+        self.name = aname
+        self.salary = asalary
+        self.role = arole
+
+    def printdetails(self):
+        return f"Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+
+    # changing no_of_holidays using class method instead of using Employee classname
+    # class method is used to access instance variables of class
+    @classmethod
+    def change_holidays(cls, new_holidays):
+        cls.no_of_holidays = new_holidays
+
+    # class constructor
+    @classmethod
+    def from_str(cls, string):
+        return cls(*string.split("-"))
+
+    @staticmethod
+    def printgood(string):
+        print("This is good " + string)
+
+
+#here programmer has inherited methods and properties of employee
+class Programmer(Employee):
+
+    #constructor for programmer class
+    def __init__(self, aname, asalary, arole,alanguages):
+        self.name = aname
+        self.salary = asalary
+        self.role = arole
+        self.languages = alanguages
+
+
+
+    def printprog(self):
+        return f"The programmers name is{self.name}, salary is {self.salary}, and role is{self.role},and {self.languages}"
+
+
+
+
+# this argument is going to init
+roger = Employee("Roger", 455, "Instructor")
+bob = Employee("Bob", 30000, "Software Developer")
+
+
+beck = Programmer("Beck",7899,"Designer",["python"])
+rex = Programmer("Rex", 9898, "Administrator",["python"])
+
+print(beck.printprog()) #output:- The programmers name isBeck, salary is 7899, and role isDesigner,and ['python']
+
+----------------------------------------------------------------------------------------------------------------
+
+Multiple Inheritance:-
+------------------------------------------------
+class Employee:
+    # no. of holidays is a class property or variable of the class
+    # it can be accessed by both the objects
+    no_of_holidays = 55
+
+    # init acts as constructor and due to init we can pass arguments while object creation
+    def __init__(self, aname, asalary, arole):
+        self.name = aname
+        self.salary = asalary
+        self.role = arole
+
+    def printdetails(self):
+        return f"Name is {self.name}. Salary is {self.salary} and role is {self.role}"
+
+    # changing no_of_holidays using class method instead of using Employee classname
+    # class method is used to access instance variables of class
+    @classmethod
+    def change_holidays(cls, new_holidays):
+        cls.no_of_holidays = new_holidays
+
+    # class constructor
+    @classmethod
+    def from_str(cls, string):
+        return cls(*string.split("-"))
+
+    @staticmethod
+    def printgood(string):
+        print("This is good " + string)
+
+
+class Player:
+    no_of_games=4
+
+    def __init__(self,name,game):
+        self.name = name
+        self.game = game
+
+    def printdetails(self):
+        return f"Name is {self.name}. game is {self.game}"
+
+#it will access code of employee first then player
+class CoolEmployee(Employee,Player):
+    language = "Python"
+
+    def printlanguage(self):
+        print(self.language)
+
+
+
+roger = Employee("Roger", 455, "Instructor")
+bob = Employee("Bob", 30000, "Software Developer")
+
+beck = Player("Beck", ["cricket"])
+
+becky = CoolEmployee("Becky",34560,"CoolProg")
+print(becky.printdetails()) #output:-Name is Becky. Salary is 34560 and role is CoolProg
+becky.printlanguage() #output:-Python
+
